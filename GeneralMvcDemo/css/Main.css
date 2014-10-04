@@ -1,0 +1,10 @@
+﻿/* File Created: September 27, 2014 */
+.navbar {
+    background-color: Blue;
+    color: White;
+	font-weight: bold;
+}
+.dropdown a {
+	color:White;
+	font-weight: bold;
+}

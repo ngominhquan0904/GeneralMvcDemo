@@ -1,0 +1,433 @@
+﻿@model GeneralMvcDemo.Models.Book
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html ng-app="EmployeeApp">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Index</title>
+    <link href="~/css/Main.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    @*  <script type="text/javascript">
+              window.jQuery || document.write('<link href="~/css/bootstrap.min.css" rel="stylesheet" type="text/css">')
+        </script>*@
+    <link href="~/css/jquery-ui-1.9.2.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">*@
+    <link href="~/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" media="screen" />
+    @*<script src="~/Scripts/jquery-ui-1.9.2.min.js" type="text/javascript"></script>*@
+    <script src="~/Scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+    @*<script src="~/Scripts/jquery-2.1.1.min.js" type="text/javascript"></script>*@
+    @* <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>*@
+    <script src="~/Scripts/bootstrap.min.js" type="text/javascript"></script>
+    @*<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>*@
+    <script src="~/Scripts/Angular/angular.min.js" type="text/javascript"></script>
+    @* <script src="~/Scripts/jquery.unobtrusive-ajax.min.js" type="text/javascript"></script>*@
+    <script src="~/Scripts/jquery.tmpl.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/Angular/controllers/Main.js" type="text/javascript"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.js" type="text/javascript" charset="UTF-8"></script>
+    <script src="~/Scripts/Angular/app.js"></script>
+    <script src="~/Scripts/Angular/controllers/Main.js"></script>
+    @* <script type="text/javascript">
+             var str="";
+             $(function () {
+                 $.getJSON(
+                 "api/WebApi",
+                 function (data) {
+                     //                 $.each(data, function (index, value) {
+                     //                     str += value.Name;
+                     //                 });
+                     var cars = data;
+                     document.getElementById("Message").innerHTML = cars[0];
+                     //                 console.write(data);
+                 }
+                 );
+             })
+        </script>*@
+
+    <script>
+   
+        $(function () {
+            $("#btPartial").click(function () {
+                $.get('@Url.Action("PartialDemo", "Home")', function (data) {
+                    document.getElementById("Partial").innerHTML = data;
+                });
+                //                $.get('/GeneralMvcDemo/Home/PartialDemo', function (data) {
+                //                                    document.getElementById("Partial").innerHTML=data;
+                //                                });
+            });
+        })
+    </script>
+    @*    <script>
+            var nameApp = angular.module('nameApp', []);
+            nameApp.controller('NameCtrl', function ($scope) {
+                $scope.names = ['Larry', 'Curly', 'Moe'];
+                $scope.employees = [{ "Id": "1", "FullName": "Ngo tri minh quan", "Address": "Nghe an", "Email": "ngominhquan@gmail.com" }, { "Id": "2", "FullName": "Ngo thi phuong le", "Address": "Ha Noi", "Email": "ngothiphuongle@gmail.com" }, { "Id": "3", "FullName": "Ngo tri le minh", "Address": "Nghe an", "Email": "ngotrileminh@gmail.com" }, { "Id": "4", "FullName": "Le thi thu ha", "Address": "thanh pho vinh", "Email": "lethuha@gmail.com"}];
+            });
+        </script>*@
+        @*<script>
+        $(function () {
+            var employees = [{ "Id": "1", "FullName": "Ngo tri minh quan", "Address": "Nghe an", "Email": "ngominhquan@gmail.com" }, { "Id": "2", "FullName": "Ngo thi phuong le", "Address": "Ha Noi", "Email": "ngothiphuongle@gmail.com" }, { "Id": "3", "FullName": "Ngo tri le minh", "Address": "Nghe an", "Email": "ngotrileminh@gmail.com" }, { "Id": "4", "FullName": "Le thi thu ha", "Address": "thanh pho vinh", "Email": "lethuha@gmail.com"}];
+            $.each(employees, function (index, value) {
+                //                $("#tbody").append(' <tr><td>' + value.FullName + '</td><td>' + value.Address + '</td><td>' + value.Email + '</td>  </tr>');
+                $("#tmpEmployee").tmpl(value).appendTo("#tbody");
+                        });
+
+        });
+
+    </script>*@
+    <script id="tmpEmployee" type="text/html">
+        @*<tr><td>${FullName}</td><td>${Address}</td><td>${Email}</td>  </tr>*@
+        <tr><td>${FullName}</td><td>fsf</td><td>fssfs</td>  </tr>
+    </script>
+   
+</head>
+<body ng-controller="EmployeeCtrl">
+    <div class="container-fluid">
+        <!-- NAVBAR -->
+        <div class="row">
+            <div class="navbar navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse" id="MenuToggle">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <a class="navbar-brand" href="/"><img src="images/logo.png" alt="Your Logo"></a>
+                    <div class="collapse navbar-collapse sidebar-collapse" id="collapseNavbar">
+                        <div></div>
+                        <ul class="nav navbar-nav active">
+                            <li class="dropdown">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Quản lý mạng lưới  <strong class="caret"></strong></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Quản lý người dùng</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Quản lý bưu cục</a></li>
+                                </ul>
+                            </li>
+                        </ul><!--end nav navbar-nav quản lý mạng lưới -->
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Quản lý đối tác  <strong class="caret"></strong></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Danh sách đối tác</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Thêm đối tác</a></li>
+                                </ul>
+                            </li>
+                        </ul><!--end nav navbar-nav quản lý đối tác-->
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Quản lý điện sự vụ <strong class="caret"></strong></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Quản lý điện</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Tạo điện</a></li>
+                                </ul>
+                            </li>
+                        </ul><!--end nav navbar-nav Quản lý điện sự vụ  -->
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Quản lý giao dịch<strong class="caret"></strong></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Tìm kiếm giao dịch</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Thống kê giao dịch</a></li>
+                                </ul>
+                            </li>
+                        </ul><!--end nav navbar-nav Quản lý giao dịch-->
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle"> Quản lý Hệ thống <strong class="caret"></strong></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Phiên bản phẩn mềm</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Tham số hệ thống</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Lịch sử hệ thống</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Danh sách lỗi hệ thống</a></li>
+                                </ul>
+                            </li>
+                        </ul><!--end nav navbar-nav  Quản lý Hệ thống-->
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Cập nhật dữ liệu  <strong class="caret"></strong></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Danh sách mã thống kê</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Danh sách mã nghiệp vụ và bảng phí</a></li>
+                                </ul>
+                            </li>
+                        </ul><!--end nav navbar-nav Cập nhật dữ liệui -->
+                    </div><!--end collapseNavbar -->
+
+                </div><!-- end container -->
+            </div><!-- end navbar -->
+        </div>
+        <div class="row">
+            <div class="col-lg-2" style="margin-top:50px;margin-left:-17px;padding:0px 0px 0px 0px;border: none;float:left">
+                <div class="list-group panel" id="leftMenu">
+                    <a href="#" class="list-group-item active">
+                        <span class="glyphicon glyphicon-camera"></span> Danh sách quản lý
+                    </a>
+                    <a href="#netMgn" class="list-group-item" data-toggle="collapse"><span class="glyphicon glyphicon-list"></span>Quản lý mạng lưới</a>
+                    <div class="collapse" id="netMgn">
+                        <a href="" class="list-group-item"><span class="glyphicon glyphicon-ok-sign"></span>Quản lý người dùng</a>
+                        <a href="" class="list-group-item"><span class="glyphicon glyphicon-ok-sign"></span>Quản lý bưu cục</a>
+                    </div>
+                    <a href="#PartnerMgn" class="list-group-item" data-toggle="collapse" data-parent="#MainMenu"><span class="glyphicon glyphicon-list"></span>Quản lý đối tác</a>
+                    <div class="collapse" id="PartnerMgn">
+                        <a href="" class="list-group-item"><span class="glyphicon glyphicon-ok-sign"></span>Danh sách đối tác</a>
+                        <a href="" class="list-group-item"><span class="glyphicon glyphicon-ok-sign"></span>Thêm đối tác</a>
+                    </div>
+                    <a href="#eventMgn" class="list-group-item" data-toggle="collapse" data-parent="#MainMenu"><span class="glyphicon glyphicon-list"></span>Quản lý điện sự vụ</a>
+                    <div class="collapse" id="eventMgn">
+                        <a href="" class="list-group-item"><span class="glyphicon glyphicon-ok-sign"></span>Quản lý điện</a>
+                        <a href="" class="list-group-item"><span class="glyphicon glyphicon-ok-sign"></span>Tạo điện</a>
+                    </div>
+                    <a href="#transMgn" class="list-group-item" data-toggle="collapse" data-parent="#MainMenu"><span class="glyphicon glyphicon-list"></span>Quản lý giao dịch</a>
+                    <div class="collapse" id="transMgn">
+                        <a href="" class="list-group-item"><span class="glyphicon glyphicon-ok-sign"></span>Tìm kiếm giao dịch</a>
+                        <a href="" class="list-group-item"><span class="glyphicon glyphicon-ok-sign"></span>Thống kê giao dịch</a>
+                    </div>
+                    <a href="#sysMgn" class="list-group-item" data-toggle="collapse" data-parent="#MainMenu"><span class="glyphicon glyphicon-list"></span>Quản lý hệ thống</a>
+                    <div class="collapse" id="sysMgn">
+                        <a href="" class="list-group-item"><span class="glyphicon glyphicon-ok-sign"></span>Phiên bản phần mềm</a>
+                        <a href="" class="list-group-item"><span class="glyphicon glyphicon-ok-sign"></span>Tham số hệ thống</a>
+                        <a href="" class="list-group-item"><span class="glyphicon glyphicon-ok-sign"></span>Lịch sự hệ thống</a>
+                        <a href="" class="list-group-item"><span class="glyphicon glyphicon-ok-sign"></span>Danh sách lỗi hệ thống</a>
+                    </div>
+                    <a href="#updateMgn" class="list-group-item" data-toggle="collapse" data-parent="#MainMenu"><span class="glyphicon glyphicon-list"></span>Quản lý cập nhật</a>
+                    <div class="collapse" id="updateMgn">
+                        <a href="" class="list-group-item"><span class="glyphicon glyphicon-ok-sign"></span>Danh sách mã nghiệp vụ</a>
+                        <a href="" class="list-group-item"><span class="glyphicon glyphicon-ok-sign"></span>Danh sách phí</a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-10" style="margin-top:50px;margin-left:0px;padding:0px 0px 0px 0px;border: none;" id="divMain">
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">Dashboard</a>
+                    </li>
+                </ul>
+                <form class="form-horizontal">
+                    <div class="row" style="margin-left:10px; margin-bottom:40px;height:150px;">
+                        <div class="col-md-9">
+                            <div class="tabbable">
+                                <ul class="nav nav-tabs ">
+                                    <li class=" active"><a href="#tab1" data-toggle="tab">Tab1</a></li>
+                                    <li><a href="#tab2" data-toggle="tab">Tab2</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="tab1">
+                                        <div class="panel panel-primary">
+                                            <div class="panel-heading" style="background-color : Yellow;">
+                                                <h3 class="panel-title">THÔNG TIN CHUNG</h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label col-md-2">Họ tên</label>
+                                                            <div class="col-md-6">
+                                                                <input class="form-control" size="16" type="text" value="" placeholder="Nhập họ tên ....">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="dtp_input2" class="col-md-4 control-label">Date Only</label>
+                                                            <div class="input-group date form_date col-md-6" data-date="" data-date-format="dd/MM/yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                                                                <input class="form-control" size="16" type="text" value="">
+                                                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                                                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                                            </div>
+                                                            <input type="hidden" id="dtp_input2" value="" /><br />
+                                                        </div>
+                                                        @*    </fieldset>
+                                                            </form>*@
+                                                    </div><!-- end col-md-6-->
+                                                </div><!--end row-->
+                                            </div>
+                                        </div><!--panel panel-primary-->
+                                    </div>
+                                    <div class="tab-pane" id="tab2">
+                                        @*<div ng-include="'editTmp'"></div>*@
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-primary" style="width : 150px;text-align :center;margin-top:40px;margin-bottom : 10px;" ng-click="loadPrameter()">Tìm kiếm</button>
+                            <br />
+                            <button class="btn btn-primary" style="width : 150px;text-align :center">Tìm Mới</button>
+                        </div>
+                    </div><!--end tab row-->
+                    <div class="row" style="margin-left:20px">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading" style="background-color : Yellow;text-align: center">
+                                <h3 class="panel-title">THÔNG TIN CHUNG</h3>
+                            </div>
+                            <div class="panel-body ">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Họ tên</th>
+                                            <th>Địa chỉ</th>
+                                            <th>Email</th>
+                                            <th>Lựa chọn</th>
+                                            <th>Chức năng</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody">
+                                        <tr>
+                                            <td> <input type="text" class="form-control" ng-model="nameQuery" /></td>
+                                            <td><input type="text" class="form-control" ng-model="addressQuery"></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr ng-repeat="employee in employees | filter : nameQuery |  filter : addressQuery" id="{{employee.Id}}">
+                                            <td>{{employee.FullName}}</td>
+                                            <td>{{employee.Address}}</td>
+                                            <td>{{employee.Email}}</td>
+                                            <td><input type="checkbox" id="cb{{employee.Id}}" /></td>
+                                            <td><button class="btn btn-primary" ng-click="Edit(employee.Id)">Edit</button> <button class="btn btn-primary">Delete</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <button class="btn btn-primary" ng-click="ImportData()">Import Data</button>
+                            </div>
+                            <div class="panel-footer">fsfs</div>
+                        </div><!--panel panel-primary-->
+                    </div>
+                    <div class="row" style="margin-left:20px">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading" style="background-color : Yellow;text-align: center">
+                                <h3 class="panel-title">THÔNG TIN CHUNG</h3>
+                            </div>
+                            <div class="panel-body">
+                                @*<form class="form-horizontal">*@
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-2">Họ tên</label>
+                                            <div class="col-md-6">
+                                                <input class="form-control" size="16" type="text" value="" placeholder="Nhập họ tên ....">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="dtp_input2" class="col-md-4 control-label">Date Only</label>
+                                            <div class="input-group date form_date col-md-6" data-date="" data-date-format="dd/MM/yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                                                <input class="form-control" size="16" type="text" value="">
+                                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                            </div>
+                                            <input type="hidden" id="dtp_input2" value="" /><br />
+                                        </div>
+                                        @*    </fieldset>
+                                            </form>*@
+                                    </div><!-- end col-md-6-->
+                                </div><!--end row-->
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-2">   Input File</label>
+                                            <div class="col-md-6">
+                                                <input type="file" value="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-2">Select</label>
+                                            <div class="col-md-6">
+                                                <select class="form-control">
+                                                    <option>Option 1</option>
+                                                    <option>Option 2</option>
+                                                    <option>Option 3</option>
+                                                    <option>Option 4</option>
+                                                    <option>Option 5</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!--end row-->
+                                @*</form>   *@
+
+                            </div>
+                        </div><!--panel panel-primary-->
+                    </div>
+                </form>
+            </div>
+        </div><!-- end Container-->
+
+        <div id="Partial" style="margin-top:50px">
+            {{editFullName}}
+        </div>
+        <button id="btPartial">Get Partial View</button>
+        <button class="btn btn-primary" ng-click="Update()">Edit1</button>
+        <script type="text/ng-template" id="editTmp" ng-controller="EmployeeCtrl">
+            <div class="container">
+                <form class="form-horizontal" style="margin-left : 10px;">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">Họ tên</label>
+                                <input class="form-control col-md-6" ng-model="${FullName1}" value="${FullName}" type="text" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">Địa chỉ</label>
+                                <input class="form-control col-md-6" ng-model="${Address}" value="${Address}" type="text" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">Email</label>
+                                <input class="form-control col-md-6" ng-model="${Email}" value="${Email}" type="text" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <button class="btn btn-primary" ng-click="Update()">Edit1</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </script>
+        <script type="text/ng-template" id="toggle-button.html">
+            <button ng-click="toggleFlag()">I Toggle the Flag</button>
+            <button ng-click="flags.flag = !flags.flag">I Do Nothing</button>
+            The flag is ${flag}
+        </script>
+        <span ng-include="'toggle-button.html'"></span>
+        The flag is {{flags.flag}}
+       
+</body>
+</html>
